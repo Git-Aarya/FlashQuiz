@@ -1,32 +1,48 @@
-# My Personal Project
-
-## FlashQuiz: A customizable Flashcard Application
-
-
-## Objects to add:
-
-
-- **Flippable Flashcards:** Users can create flashcards with
-  a question on one side and the answer on the othr. e
-  This feature allows for an interactive study experience.
-- **Folders for Categorization:** Users can organize flashcards
-  into folders based on different topics or subjects.
-  This feature helps in maintaining an organized structure
-  for various subjects or themes.
-- **Study Timer:** A built-in timer will track how long it
-  takes to answer each question, providing feedback on the
-  user's learning pace and helping in time management.
+# FlashQuiz: A Customizable Flashcard Application
 
 ## Overview
-**FlashQuiz** is a Java-based desktop application designed for
-learners and educators. It offers a dynamic and interactive
-way to study and memorize information through digital flashcards.
-This application is particularly useful for students and teachers
-who wish to create customized learning materials in an engaging format.
+**FlashQuiz** is a Java-based desktop application tailored for learners and educators. It offers a dynamic and interactive way to study and memorize information using digital flashcards. This tool is especially beneficial for students and teachers who are looking to create customized learning materials in an engaging and structured format.
 
-## Why FlashQuiz
-This project interests me because it merges technology with education,
-making learning more accessible and efficient. The idea of creating a
-digital tool that can aid in studying and memorization reflects my
-passion for both software development and educational innovation.
+## Features
 
+### Flippable Flashcards
+- **Interactive Learning**: Users can create flashcards with a question on one side and the answer on the other, facilitating an interactive study session.
+
+### Folders for Categorization
+- **Organized Learning**: Flashcards can be organized into folders based on different topics or subjects, which helps maintain a structured approach to studying various themes or subjects.
+
+### Study Timer
+- **Time Management**: Incorporates a built-in timer to track how long it takes to answer each flashcard, providing valuable feedback on the user’s learning pace and efficiency.
+
+## Motivation
+The motivation behind **FlashQuiz** stems from my interest in merging technology with education to make learning more accessible and effective. As a passionate advocate for educational innovation, I find the development of digital tools that enhance studying and memorization incredibly rewarding. This project reflects my enthusiasm for software development and my commitment to educational excellence.
+
+## How to Use FlashQuiz
+*Instructions on setting up and starting the application, along with basic usage tutorials, could be beneficial here for new users.*
+### Creating and Managing Flashcards
+
+1. **Creating a New Folder**
+    - Open FlashQuiz and click on the "Create Folder" button in the sidebar.
+    - Enter a name for your folder and click 'OK'. This folder will be used to organize related flashcards.
+
+2. **Adding Flashcards**
+    - Select a folder from the sidebar and click the "Add FlashCard" button.
+    - Enter the question and answer for the flashcard and click 'Save'. The flashcard will be added to your selected folder.
+
+### Reviewing and Editing Flashcards
+
+1. **Reviewing Flashcards**
+    - Click on the "Review Flashcards" button in the sidebar.
+    - Select the folder containing the flashcards you wish to review.
+    - Use the 'Next' and 'Show Answer' buttons to navigate through the flashcards.
+
+2. **Editing Flashcards**
+    - Click on the "Edit Flashcards" button in the sidebar.
+    - Select the folder and the specific flashcard you wish to edit.
+    - Modify the question or answer and click 'Update' to save changes.
+
+### Saving Your Progress
+
+- FlashQuiz automatically saves your progress when you exit the application. However, you can manually save your data at any time by clicking the "Save" button in the sidebar.
+
+This brief guide should help you get started with FlashQuiz. Explore the application to discover more ways it can assist in your study routines!
