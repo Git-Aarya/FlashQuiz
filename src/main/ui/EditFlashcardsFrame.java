@@ -21,9 +21,9 @@ public class EditFlashcardsFrame extends JFrame {
     private void initializeComponents() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("Edit Flashcards");
-        getContentPane().setBackground(new Color(18, 18, 18)); // Dark background
-        setLayout(new BorderLayout(10, 10)); // Border layout for better spacing
-        setSize(400, 200); // Setting size of the window
+        getContentPane().setBackground(new Color(18, 18, 18));
+        setLayout(new BorderLayout(10, 10));
+        setSize(400, 200);
         setLocationRelativeTo(null);
 
         // Panel for form

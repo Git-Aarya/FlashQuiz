@@ -39,11 +39,11 @@ public class ReviewFlashcardsFrame extends JFrame {
         getContentPane().add(titleBar, BorderLayout.NORTH);
 
         JPanel mainPanel = new JPanel(new GridBagLayout());
-        mainPanel.setBackground(new Color(18, 18, 18));
+        mainPanel.setBackground(new Color(32, 34, 37));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(10, 30, 5, 30); // Reduced bottom padding for elements
+        gbc.insets = new Insets(10, 30, 5, 30);
 
         questionLabel = new JLabel("Click 'Next' to start reviewing", SwingConstants.CENTER);
         questionLabel.setForeground(new Color(230, 230, 230));
@@ -55,12 +55,12 @@ public class ReviewFlashcardsFrame extends JFrame {
         answerArea.setLineWrap(true);
         answerArea.setEditable(false);
         answerArea.setForeground(new Color(230, 230, 230));
-        answerArea.setBackground(new Color(45, 45, 45));
+        answerArea.setBackground(new Color(44, 47, 51));
         answerArea.setFont(new Font("Arial", Font.PLAIN, 14));
         JScrollPane answerScrollPane = new JScrollPane(answerArea);
         answerScrollPane.setBorder(BorderFactory.createEmptyBorder());
         answerScrollPane.setViewportBorder(BorderFactory.createEmptyBorder());
-        styleRoundedBorder(answerScrollPane, new Color(45, 45, 45), 15);
+        styleRoundedBorder(answerScrollPane, new Color(44, 47, 60), 10);
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
@@ -70,7 +70,7 @@ public class ReviewFlashcardsFrame extends JFrame {
         timerLabel = new JLabel("Time: --:--", SwingConstants.CENTER);
         timerLabel.setForeground(new Color(230, 230, 230));
         gbc.weighty = 0.0;
-        gbc.insets = new Insets(5, 30, 0, 30); // Reduced space above the timer label
+        gbc.insets = new Insets(5, 30, 0, 30);
         mainPanel.add(timerLabel, gbc);
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
@@ -80,7 +80,7 @@ public class ReviewFlashcardsFrame extends JFrame {
         nextButton = createRoundedButton("Next");
         buttonPanel.add(showAnswerButton);
         buttonPanel.add(nextButton);
-        gbc.insets = new Insets(5, 30, 10, 30); // Reduced space above buttons
+        gbc.insets = new Insets(5, 30, 10, 30);
         mainPanel.add(buttonPanel, gbc);
 
         getContentPane().add(mainPanel, BorderLayout.CENTER);
@@ -91,22 +91,22 @@ public class ReviewFlashcardsFrame extends JFrame {
 
     private JPanel createTitleBar() {
         JPanel titleBar = new JPanel();
-        titleBar.setBackground(new Color(30, 30, 30)); // Dark background color for title bar
+        titleBar.setBackground(new Color(32, 32, 32));
         titleBar.setLayout(new BorderLayout());
         titleBar.setPreferredSize(new Dimension(getWidth(), 30));
 
         JLabel titleLabel = new JLabel("    ", SwingConstants.CENTER);
-        titleLabel.setForeground(Color.WHITE); // White text for the title
+        titleLabel.setForeground(Color.WHITE);
         titleBar.add(titleLabel, BorderLayout.CENTER);
 
         JButton closeButton = new JButton("X");
         closeButton.addActionListener(e -> dispose());
-        closeButton.setFocusPainted(false); // Removes focus border
-        closeButton.setBorderPainted(false); // Removes the border around the button
-        closeButton.setContentAreaFilled(false); // Removes background fill
-        closeButton.setForeground(Color.WHITE); // Set the text color to white
+        closeButton.setFocusPainted(false);
+        closeButton.setBorderPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setForeground(Color.WHITE);
         closeButton.setFont(new Font("Arial", Font.BOLD, 12));
-        closeButton.setOpaque(false); // Make sure the button is completely transparent
+        closeButton.setOpaque(false);
         titleBar.add(closeButton, BorderLayout.EAST);
 
         // Add mouse dragging functionality

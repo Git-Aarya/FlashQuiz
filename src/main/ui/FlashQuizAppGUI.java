@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-// Refactored to use Java Swing for GUI instead of console, renamed to FlashQuizAppGUI.
+// Refactored to use Java Swing for GUI instead of console.
 public class FlashQuizAppGUI extends JFrame {
     private static final String JSON_STORE = "./data/flashcards.json";
     private final Map<String, Folder> folders;
@@ -22,7 +22,6 @@ public class FlashQuizAppGUI extends JFrame {
     private final JsonReader jsonReader;
     private JPanel mainContent;
 
-    // Constructor renamed to match class name
     public FlashQuizAppGUI() throws FileNotFoundException {
         folders = new HashMap<>();
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -49,32 +48,40 @@ public class FlashQuizAppGUI extends JFrame {
 
         getContentPane().add(sidebar, BorderLayout.WEST);
         getContentPane().add(mainContent, BorderLayout.CENTER);
+
+        UIManager.put("Panel.background", new Color(50, 50, 50));
+        UIManager.put("OptionPane.background", new Color(50, 50, 50));
+        UIManager.put("OptionPane.messageForeground", Color.WHITE);
+        UIManager.put("Button.background", new Color(30, 30, 30));
+        UIManager.put("Button.foreground", Color.WHITE);
+        UIManager.put("Button.focus", new Color(45, 45, 45));  // Focus color
+        UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 14));
     }
 
     private JPanel createTopBar() {
         JPanel topBar = new JPanel(new BorderLayout());
-        topBar.setBackground(new Color(32, 34, 37)); // Or any color you prefer for the bar
-        topBar.setPreferredSize(new Dimension(0, 30)); // Set the height of the top bar
+        topBar.setBackground(new Color(32, 34, 37));
+        topBar.setPreferredSize(new Dimension(0, 30));
 
         // Left side logo
-        JLabel logoLabel = new JLabel(new ImageIcon("path/to/your/logo.png")); // Replace with your logo path
+        JLabel logoLabel = new JLabel(new ImageIcon("path/to/your/logo.png"));
         topBar.add(logoLabel, BorderLayout.WEST);
 
         // Middle title
         JLabel titleLabel = new JLabel("FlashQuiz", SwingConstants.CENTER);
         titleLabel.setForeground(Color.WHITE); // Text color
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font size and style
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         topBar.add(titleLabel, BorderLayout.CENTER);
 
         // Right side control buttons
         JPanel controlButtons = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 0));
-        controlButtons.setOpaque(false); // Make the panel transparent
+        controlButtons.setOpaque(false);
 
-        JButton minimizeButton = new JButton(new ImageIcon("data\\button_icons\\minimize-sign.png")); // Add your minimize icon
-        JButton closeButton = new JButton(new ImageIcon("data\\button_icons\\x-button.png")); // Add your close icon
+        JButton minimizeButton = new JButton(new ImageIcon("data\\button_icons\\minimize-sign.png"));
+        JButton closeButton = new JButton(new ImageIcon("data\\button_icons\\x-button.png"));
 
         // Set buttons transparent, without borders, and add action listeners
-        int controlButtonSize = 16; // Adjust this size as needed
+        int controlButtonSize = 16;
         setupControlButton(minimizeButton, "data\\button_icons\\minimize-sign.png", controlButtonSize, () -> setState(Frame.ICONIFIED));
         setupControlButton(closeButton, "data\\button_icons\\x-button.png", 16, () -> {
             saveFolders();
@@ -96,7 +103,7 @@ public class FlashQuizAppGUI extends JFrame {
         sidebar.setBackground(sidebarColor);
         sidebar.setPreferredSize(new Dimension(300, getHeight()));
 
-        // Add action buttons to the sidebar
+        // Action buttons to the sidebar
         addButton(sidebar, "Create Folder", this::createFolder);
         addButton(sidebar, "Add FlashCard", this::addFlashCardToFolder);
         addButton(sidebar, "Review Flashcards", this::reviewFlashcards);
@@ -160,7 +167,6 @@ public class FlashQuizAppGUI extends JFrame {
         Image resizedImg = img.getScaledInstance(size, size, Image.SCALE_SMOOTH);
         button.setIcon(new ImageIcon(resizedImg));
 
-        // Make the button transparent and without borders
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
         button.setFocusPainted(false);
@@ -190,7 +196,7 @@ public class FlashQuizAppGUI extends JFrame {
         button.setOpaque(true);
         button.setContentAreaFilled(false);
 
-        // Add mouse listener for the hover effect
+        // Hover effect
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 button.setOpaque(true);
@@ -280,7 +286,7 @@ public class FlashQuizAppGUI extends JFrame {
     // Handler for adding a flashcard to a folder
     private void addFlashCardToFolder(ActionEvent e) {
         String folderName = (String) JOptionPane.showInputDialog(this,
-                "Enter the folder name where you want to add the flashcard:",
+                "Select the folder where you want to add the flashcard:",
                 "Select Folder",
                 JOptionPane.PLAIN_MESSAGE,
                 null,
@@ -309,25 +315,8 @@ public class FlashQuizAppGUI extends JFrame {
             jsonWriter.write(folders);
             jsonWriter.close();
 
-            // Set the look and feel for JOptionPane
-            UIManager.put("Panel.background", new Color(50, 50, 50));
-            UIManager.put("OptionPane.background", new Color(50, 50, 50));
-            UIManager.put("OptionPane.messageForeground", Color.WHITE);
-            UIManager.put("Button.background", new Color(30, 30, 30));
-            UIManager.put("Button.foreground", Color.WHITE);
-            UIManager.put("Button.focus", new Color(45, 45, 45));  // Focus color
-            UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 14));
-
             JOptionPane.showMessageDialog(this, "Folders saved to file.", "Save Successful", JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException ex) {
-            UIManager.put("Panel.background", new Color(50, 50, 50));
-            UIManager.put("OptionPane.background", new Color(50, 50, 50));
-            UIManager.put("OptionPane.messageForeground", Color.WHITE);
-            UIManager.put("Button.background", new Color(30, 30, 30));
-            UIManager.put("Button.foreground", Color.WHITE);
-            UIManager.put("Button.focus", new Color(45, 45, 45));  // Focus color
-            UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 14));
-
             JOptionPane.showMessageDialog(this, "Unable to write to file: " + JSON_STORE, "Save Error", JOptionPane.ERROR_MESSAGE);
         }
     }
