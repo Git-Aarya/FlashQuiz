@@ -14,9 +14,6 @@
 ### Study Timer
 - **Time Management**: Incorporates a built-in timer to track how long it takes to answer each flashcard, providing valuable feedback on the user’s learning pace and efficiency.
 
-## Motivation
-The motivation behind **FlashQuiz** stems from my interest in merging technology with education to make learning more accessible and effective. As a passionate advocate for educational innovation, I find the development of digital tools that enhance studying and memorization incredibly rewarding. This project reflects my enthusiasm for software development and my commitment to educational excellence.
-
 ## How to Use FlashQuiz
 *Instructions on setting up and starting the application, along with basic usage tutorials, could be beneficial here for new users.*
 ### Creating and Managing Flashcards
