@@ -35,6 +35,7 @@ public class FlashQuizAppGUI extends JFrame {
 
         setupUI();
         updateFoldersDisplay();
+        loadFolders();
     }
 
     private void setupUI() {
@@ -75,7 +76,10 @@ public class FlashQuizAppGUI extends JFrame {
         // Set buttons transparent, without borders, and add action listeners
         int controlButtonSize = 16; // Adjust this size as needed
         setupControlButton(minimizeButton, "data\\button_icons\\minimize-sign.png", controlButtonSize, () -> setState(Frame.ICONIFIED));
-        setupControlButton(closeButton, "data\\button_icons\\x-button.png", controlButtonSize, () -> System.exit(0));
+        setupControlButton(closeButton, "data\\button_icons\\x-button.png", 16, () -> {
+            saveFolders();
+            System.exit(0);
+        });
 
         controlButtons.add(minimizeButton);
         controlButtons.add(closeButton);
@@ -105,7 +109,10 @@ public class FlashQuizAppGUI extends JFrame {
 
         JButton exitButton = new JButton("Exit");
         styleButton(exitButton);
-        exitButton.addActionListener(e -> System.exit(0));
+        exitButton.addActionListener(e -> {
+            saveFolders();
+            System.exit(0);
+        });
         sidebar.add(exitButton);
 
         return sidebar;
@@ -301,19 +308,37 @@ public class FlashQuizAppGUI extends JFrame {
             jsonWriter.open();
             jsonWriter.write(folders);
             jsonWriter.close();
-            JOptionPane.showMessageDialog(this, "Folders saved to file.");
+
+            // Set the look and feel for JOptionPane
+            UIManager.put("Panel.background", new Color(50, 50, 50));
+            UIManager.put("OptionPane.background", new Color(50, 50, 50));
+            UIManager.put("OptionPane.messageForeground", Color.WHITE);
+            UIManager.put("Button.background", new Color(30, 30, 30));
+            UIManager.put("Button.foreground", Color.WHITE);
+            UIManager.put("Button.focus", new Color(45, 45, 45));  // Focus color
+            UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 14));
+
+            JOptionPane.showMessageDialog(this, "Folders saved to file.", "Save Successful", JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "Unable to write to file: " + JSON_STORE);
+            UIManager.put("Panel.background", new Color(50, 50, 50));
+            UIManager.put("OptionPane.background", new Color(50, 50, 50));
+            UIManager.put("OptionPane.messageForeground", Color.WHITE);
+            UIManager.put("Button.background", new Color(30, 30, 30));
+            UIManager.put("Button.foreground", Color.WHITE);
+            UIManager.put("Button.focus", new Color(45, 45, 45));  // Focus color
+            UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 14));
+
+            JOptionPane.showMessageDialog(this, "Unable to write to file: " + JSON_STORE, "Save Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
     // Method to load folders from JSON
     private void loadFolders() {
         try {
             folders.clear();
             folders.putAll(jsonReader.read());
-            JOptionPane.showMessageDialog(this, "Folders loaded from file.");
-            updateFoldersDisplay();  // Update the UI to reflect loaded folders
+            updateFoldersDisplay();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Unable to read from file: " + JSON_STORE);
         }
