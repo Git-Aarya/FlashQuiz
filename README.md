@@ -15,7 +15,7 @@
 - **Time Management**: Incorporates a built-in timer to track how long it takes to answer each flashcard, providing valuable feedback on the user’s learning pace and efficiency.
 
 ## How to Use FlashQuiz
-*Instructions on setting up and starting the application, along with basic usage tutorials, could be beneficial here for new users.*
+
 ### Creating and Managing Flashcards
 
 1. **Creating a New Folder**
