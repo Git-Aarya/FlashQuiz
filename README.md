@@ -43,3 +43,5 @@
 - FlashQuiz automatically saves your progress when you exit the application. However, you can manually save your data at any time by clicking the "Save" button in the sidebar.
 
 This brief guide should help you get started with FlashQuiz. Explore the application to discover more ways it can assist in your study routines!
+
+![FlashQuiz ScreenShot](main_page.png)
